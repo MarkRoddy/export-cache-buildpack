@@ -1,2 +1,13 @@
 #!/usr/bin/env bash
-echo "-----> Nothing to compile"
+# bin/compile BUILD_DIR CACHE_DIR ENV_DIR
+BUILD_DIR="$1";
+CACHE_DIR="$2";
+ENV_DIR="$3"
+
+echo "-----> Exporting CACHE_DIR location ($CACHE_DIR) as an environment variable"
+
+if [ -d "$ENV_DIR" ]; then
+    echo -n "$CACHE_DIR" > "$ENV_DIR/CACHE_DIR"
+else
+    echo "-----> ENV_DIR '$ENV_DIR' doesn't appear to exist!!!!!!!"
+fi
